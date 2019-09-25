@@ -148,3 +148,145 @@
 // }
 
 // printSums([1, 5, 10], [100, 500, 1000]);
+
+
+// // Write a function that accepts an array of strings and returns a new array containing every other string from the original array. For example, if the input is ["a", "b", "c", "d", "e", "f"], the output should be ["a", "c", "e"].
+
+// function selectEvenItems(strings) {
+//   var result = [];
+//   var index = 0;
+//   strings.forEach(function(string) {
+//     if (index % 2 === 0) {
+//       result.push(string);
+//     }
+//     index++;
+//   });
+//   return result;
+// }
+// console.log(selectEvenItems(["a", "b", "c", "d", "e", "f"]));
+
+// // Write a method that accepts one argument - an array of numbers. The method should return the greatest number. For example, if the input is [5, 4, 8, 1, 2], the output should be 8.
+
+// function max(numbers) {
+//   var currentMax = numbers[0];
+//   numbers.forEach(function(number) {
+//     if (number > currentMax) {
+//       currentMax = number;
+//     }
+//   });
+//   return currentMax;
+// }
+// console.log(max([5, 4, 8, 1, 2]));
+
+// // Write a method that accepts one argument - an array of numbers that are in ascending order. The method that returns a new array with the same values in descending order. However, do not use the "reverse" method built in to Ruby.
+
+// function descending(numbers) {
+//   var result = [];
+//   for (var i = numbers.length - 1; i >= 0; i--) {
+//     result.push(numbers[i]);
+//   }
+//   return result;
+// }
+
+// console.log(descending([1, 3, 5, 7]));
+
+// // 1. Write a function that reverses a string. Don’t use the "reverse" method! (Note: you can use the .split("") method to convert a string into an array of characters).
+
+// function reverseString(string) {
+//   var reversedString = "";
+//   var index = string.length - 1;
+
+//   while (index >= 0) {
+//     reversedString += string[index];
+//     index--;
+//   }
+//   return reversedString;
+// }
+
+// console.log(reverseString("piglet"));
+
+
+// // 2. Write a function that accepts a string and returns the number of times that the letter "a" occurs in it.
+
+// function countAs(string) {
+//   var stringArray = string.split("");
+//   var count = 0;
+
+//   stringArray.forEach(function(letter) {
+//     if (letter === "a") {
+//       count++;
+//     }
+//   });
+
+//   return count;
+// }
+
+// console.log(countAs("bananas"));
+
+
+// // 3. Write a function that accepts two arguments. The first argument is an array of numbers that are in ascending order. The second argument is a number to search for within the array. The function should do a linear search and return the index at which this value is found, or it should return nil if the value is not found. See if there’s a way in which you can optimize this method to keep its number of steps to a minimum! Note: Do not use the "index" method!
+
+
+// function findIndex(nums, target) {
+//   var index = 0;
+//   var foundIndex = null;
+
+//   nums.forEach(function(num) {
+//     if (num === target) {
+//       foundIndex = index;
+//     }
+//     index++;
+//   });
+//   return foundIndex;
+// }
+
+// console.log(findIndex([2, 3, 4, 7, 9], 7));
+// console.log(findIndex([2, 3, 4, 7, 9], 10));
+
+
+// // 4. Write a function that accepts two arguments. The first argument is an array of numbers that are in ascending order. The second argument is a new number that is not yet in the array. The function should return a new array with the new number inserted in the proper place. Do not use the "sort" method!
+
+// function addTarget(orderedNums, target) {
+//   // find the correct index to place target
+//   var placementIndex = 0;
+//   while (orderedNums[placementIndex] < target) {
+//     placementIndex++;
+//   }
+
+//   // move the other elements out of the way
+//   var index = orderedNums.length - 1;
+//   while (index >= placementIndex) {
+//     orderedNums[index + 1] = orderedNums[index]
+//     index--;
+//   }
+
+//   // place the number at the right index
+//   orderedNums[placementIndex] = target;
+
+//   return orderedNums;
+// }
+
+// console.log(addTarget([2, 3, 4, 7, 9], 5));
+
+
+// 5. Write a function that accepts two arguments. The first argument is an array of numbers that are in ascending order. The second argument is a number that is contained within the array. The function should return the string "lower" if the value is found in the lower half of the array, and it should return "higher" if the value is found within the greater half of the array. Try to optimize this algorithm so that it takes a minimum number of steps!
+
+function highOrLow(orderedNums, target) {
+  var midIndex = Math.floor(orderedNums.length/2);
+  var index = 0;
+  var message = null;
+
+  while (index < orderedNums.length) {
+    if (orderedNums[index] === target ) {
+      if (index < midIndex) {
+        message = "low"
+      } else {
+        message = "high"
+      }
+    }
+    index++;
+  }
+  return message;
+}
+
+console.log(highOrLow([2, 3, 4, 7, 9], 10));
